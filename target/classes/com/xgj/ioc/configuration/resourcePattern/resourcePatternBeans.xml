@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context 
+       		http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 通过resource-pattern使Spring加载特定的Bean 
+	<context:component-scan base-package="com.xgj.ioc.configuration.resourcePattern" 
+		resource-pattern="scan/*.class"/> -->
+
+	<!-- context:include-filter context:exclude-filter-->
+	<context:component-scan base-package="com.xgj.ioc.configuration.resourcePattern">
+		<context:include-filter type="regex"
+			expression="com\.xgj\.ioc\.configuration\.resourcePattern.*" />
+		<context:exclude-filter type="aspectj" expression="com.xgj.ioc.configuration.resourcePattern..*NoScan+"/>
+	</context:component-scan> 
+	
+	<!-- use-default-filters 通过context:include-filter只加载@Controller标签的Bean，只是演示功能，实际用处不大
+	
+	<context:component-scan base-package="com.xgj.ioc.configuration.resourcePattern"  use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	-->
+	
+</beans>

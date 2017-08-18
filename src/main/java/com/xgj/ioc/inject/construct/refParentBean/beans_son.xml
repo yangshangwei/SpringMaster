@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="gun" class="com.xgj.ioc.inject.construct.refParentBean.Gun">
+		<property name="brand" value="柯尔特M2000" />
+		<property name="bulletNum" value="7" />
+		<property name="price" value="999" />
+	</bean>
+	
+	<bean id="police" class="com.xgj.ioc.inject.construct.refParentBean.Police">
+		<property name="gun">
+			<!-- 通过parent属性，引用父容器中的gun,如果定义为bean="gun"则引用本容器中的gun -->
+			<ref parent="gun"/>
+		</property>
+	</bean>
+	
+</beans>

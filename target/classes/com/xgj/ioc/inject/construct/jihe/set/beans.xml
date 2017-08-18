@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="pets" class="com.xgj.ioc.inject.construct.jihe.set.Pets">
+		<property name="set">
+			<set>
+				<value>bear</value>
+				<value>dog</value>
+				<value>cat</value>
+				<value>snake</value>
+				<value>pig</value>
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="petShop" class="com.xgj.ioc.inject.construct.jihe.set.PetShop">
+		<property name="pets" ref="pets"/>
+	</bean>
+	
+</beans>

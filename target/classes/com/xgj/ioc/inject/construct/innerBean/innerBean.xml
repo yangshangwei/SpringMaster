@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="police" class="com.xgj.ioc.inject.construct.innerBean.Police">
+		<property name="gun">
+			<!-- 如果gun bean只会被police引用，而不会被容器中的其它Bean引用，可以以内部Bean的方式注入 -->
+			<bean class="com.xgj.ioc.inject.construct.innerBean.Gun">
+				<property name="brand" value="柯尔特M2000"/>
+				<property name="bulletNum" value="7"/>
+				<property name="price" value="788"/>
+			</bean>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 父Bean abstract="true" -->
+	<bean id="parentPets"   abstract="true" class="com.xgj.ioc.inject.construct.jihe.merge.Pets">
+		<property name="map">
+			<map>
+				<entry>
+					<key>
+						<!-- 为Integer提供值,spring在设置值时，会转换为定义的Integer类型 -->
+						<value>111</value>
+					</key>
+					<value>cat</value>
+				</entry>
+				<entry>
+					<key>
+						<value>113</value>
+					</key>
+					<value>bird</value>
+				</entry>
+				<entry>
+					<key>
+						<value>115</value>
+					</key>
+					<value>dog</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="pets" parent="parentPets"> <!-- 指定父Bean -->
+		<property name="map">
+			<!-- 设置merge="true" 和父bean的同名集合属性合并 -->
+			<map merge="true"> 
+				<entry>
+					<key>
+						<value>117</value>
+					</key>
+					<value>monkey</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="petShop" class="com.xgj.ioc.inject.construct.jihe.merge.PetShop">
+		<property name="pets" ref="pets" />
+	</bean>
+
+</beans>

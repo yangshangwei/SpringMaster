@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+	<bean id="police" class="com.xgj.ioc.inject.construct.ref.Police">
+		<property name="gun">
+			 通过ref应用容器中的gun ,建立police和gun的依赖关系 
+			<ref bean="gun" />
+		</property>
+	</bean>
+	 -->
+	 
+	 <!-- 使用p命名空间  引用其他bean-->
+	<bean id="police" class="com.xgj.ioc.inject.construct.ref.Police"
+		p:gun-ref="gun"/>
+		
+	<bean id="gun" class="com.xgj.ioc.inject.construct.ref.Gun" />
+</beans>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="tank" class="com.xgj.ioc.inject.construct.type.Tank">
+		
+		<!-- 
+		<constructor-arg type="java.lang.String">
+			<value>T72</value>
+		</constructor-arg>
+		
+		<constructor-arg type="double">
+			<value>20000.00</value>
+		</constructor-arg>
+		 -->
+		 
+		 <!-- 简化方式 -->
+	     <constructor-arg type="java.lang.String"  value="T72"/>
+		 <constructor-arg  type="double" value="20000.00"/>
+
+	</bean>
+</beans>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="pets" class="com.xgj.ioc.inject.construct.jihe.strongType.Pets">
+		<property name="map">
+		<!--  
+			<map>
+				<entry>
+					<key>
+						为Integer提供值,spring在设置值时，会转换为定义的Integer类型 
+						<value>111</value>
+					</key>
+					<value>cat</value>
+				</entry>
+				<entry>
+					<key>
+						<value>113</value>
+					</key>
+					<value>bird</value>
+				</entry>
+				<entry>
+					<key>
+						<value>115</value>
+					</key>
+					<value>dog</value>
+				</entry>
+			</map>
+			-->
+		<!-- 简化方式 -->
+			<map>
+				<entry key="111" value="cat"/>
+				<entry key="113" value="bird"/>
+				<entry key="115" value="dog"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="petShop" class="com.xgj.ioc.inject.construct.jihe.strongType.PetShop">
+		<property name="pets" ref="pets" />
+	</bean>
+
+</beans>

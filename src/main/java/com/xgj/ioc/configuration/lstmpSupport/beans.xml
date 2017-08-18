@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			
+			http://www.springframework.org/schema/context 
+       		http://www.springframework.org/schema/context/spring-context.xsd">
+
+	
+	<!-- (1)声明Context命名空间以及Schema文件   (2)扫描类包以及应用注解定义的bean -->
+	<context:component-scan base-package="com.xgj.ioc.configuration.lstmpSupport"/>
+	
+</beans>

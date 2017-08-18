@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- prototype类型的Bean -->
+	<bean id="plane" class="com.xgj.ioc.lookup.Plane" scope="prototype" />
+	
+	<!-- 实施方法注入-->
+	<bean id="magicPilot" class="com.xgj.ioc.lookup.MagicPilot">
+		<lookup-method name="getPlane" bean="plane" />
+	</bean> 
+	
+	<!-- 
+	<bean id="magicPilotImpl" class="com.xgj.ioc.lookup.MagicPilotImpl"/> -->
+
+</beans>

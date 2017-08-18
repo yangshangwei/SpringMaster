@@ -1,0 +1,22 @@
+package com.xgj.aop.spring.advice.DelegatingIntroductionInterceptor;
+
+public class MethodPerformace {
+	private long begin;
+	private long end;
+	private String serviceMethod;
+
+	public MethodPerformace(String serviceMethod) {
+		reset(serviceMethod);
+	}
+
+	public void printPerformace() {
+		end = System.currentTimeMillis();
+		long elapse = end - begin;
+		System.out.println(serviceMethod + "ª®∑—" + elapse + "∫¡√Î°£");
+	}
+
+	public void reset(String serviceMethod) {
+		this.serviceMethod = serviceMethod;
+		this.begin = System.currentTimeMillis();
+	}
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.6.4.201503051146-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/main/resources/spring/application-config.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/set/plane.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/index/tank_index_match.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/joint/tank_joint_match.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/reflect/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/loop/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/ref/police-gun.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/refParentBean/beans_father.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/innerBean/innerBean.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/nullValue/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/cascadeProperty/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/jihe/list/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/jihe/set/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/inject/construct/utilSchema/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/configuration/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/configuration/resourcePattern/resourcePatternBeans.xml</config>
+		<config>src/main/java/com/xgj/ioc/configuration/lifeCycle/beanLifeCycle.xml</config>
+		<config>src/main/java/com/xgj/ioc/lookup/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/beansRelation/extend/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/beansRelation/reference/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/propertyplacehoder/beans.xml</config>
+		<config>src/main/java/com/xgj/ioc/i18n/messageSource/beans.xml</config>
+		<config>src/main/java/com/xgj/aop/spring/advice/proxyFactory/beans.xml</config>
+		<config>src/main/java/com/xgj/aop/spring/advice/throwsAdvice/conf-advice.xml</config>
+	</configs>
+	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/mvc-config.xml</config>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

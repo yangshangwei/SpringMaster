@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<!-- 使用pilotTwo的MethodReplacer接口方法替换该Bean的getPlane方法 -->
+	<bean id="pilotOne" class="com.xgj.ioc.methodReplace.PilotOne">
+		<replaced-method name="getPlane" replacer="pilotTwo"/>
+	</bean>
+	
+	<bean id="pilotTwo" class="com.xgj.ioc.methodReplace.PilotTwo"/>
+
+</beans>

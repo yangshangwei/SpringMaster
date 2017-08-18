@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!--
+	<bean id="planeOne" class="com.xgj.ioc.beansRelation.extend.Plane"
+			p:brand="F35" p:speed="1200" p:color="white"/>
+	
+	
+	
+	<bean id="planeTwo" class="com.xgj.ioc.beansRelation.extend.Plane"
+			p:brand="F35" p:speed="1200" p:color="blue"/>
+
+	 -->
+	 
+	 <bean id="abstractPlane" class="com.xgj.ioc.beansRelation.extend.Plane" abstract="true"
+	 	p:brand="F35" p:speed="1200" p:color="default"/>
+	 	
+	 <bean id="planeOne" parent="abstractPlane" 
+	 	p:color="white"/>
+	 	
+	 <bean id="planeTwo" parent="abstractPlane" 
+	 	p:color="blue"/>
+
+</beans>

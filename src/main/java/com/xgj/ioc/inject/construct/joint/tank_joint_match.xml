@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="tank" class="com.xgj.ioc.inject.construct.joint.Tank">
+
+		<constructor-arg type="java.lang.String" index="0" value="T72" />
+		<constructor-arg type="double" index="1" value="25000" />
+		<constructor-arg type="int" index="2" value="3" />
+
+	</bean>
+
+</beans>

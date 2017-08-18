@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+	<bean id="petShop" class="com.xgj.ioc.inject.construct.utilSchema.PetShop">
+		<property name="pets" ref="pets" />
+	</bean>
+
+ <!--  第一种写法 ，通过ref引用，此时需要在 uitl-map中声明id 推荐这种写法 -->
+ <!-- property 中的name对应类中属性， ref对应uitl的id -->
+	<bean id="pets" class="com.xgj.ioc.inject.construct.utilSchema.Pets">
+		<property name="petMap" ref="petMap"/>
+		<property name="petList" ref="petList"/>
+		<property name="petSet" ref="petSet"/>
+		<property name="petProperties" ref="petProperties"/>
+	</bean>
+	
+	
+	<!-- 配置一个Map集合 -->
+	<util:map id="petMap" map-class="java.util.HashMap">
+		<entry key="101" value="dog" />
+		<entry key="103" value="wolf" />
+		<entry key="105" value="bird" />
+	</util:map>
+	
+	<!-- 配置一个List集合 -->
+	<util:list id="petList" list-class="java.util.ArrayList" value-type="java.lang.String">
+		<value>DOG</value>
+		<value>CAT</value>
+		<value>BIRD</value>
+	</util:list>
+
+	 <!-- util配置一个Set集合 -->
+	<util:set id="petSet" set-class="java.util.HashSet" value-type="java.lang.String">
+		<value>牛</value>
+		<value>马</value>
+		<value>狗</value>
+	</util:set>
+
+
+	<!--配置一个 Properties-->
+	<util:properties id="petProperties">
+	        <prop key="151">PIG</prop>
+	        <prop key="153">PINGUIN</prop>
+	</util:properties>
+
+
+
+
+	<!-- 第二种写法，嵌入内部 
+	<bean id="pets" class="com.xgj.ioc.inject.construct.utilSchema.Pets">
+		<property name="petMap">
+			<util:map  map-class="java.util.HashMap" 
+					   key-type="java.lang.Integer" 
+					   value-type="java.lang.String"> 可以通过map-class显示指定Map的实现类
+				<entry key="101" value="dog" />
+				<entry key="103" value="wolf" />
+				<entry key="105" value="bird" />
+			</util:map>
+		</property>
+	</bean>
+	
+	 -->
+	
+
+</beans>
