@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 配置切面：静态方法匹配切面 -->
+	
+	<!-- Waiter目标类 -->
+	<bean id="waiterTarget" class="com.xgj.aop.spring.advisor.StaticMethodMatcherPointcutAdvisor.Waiter"/>
+	<!-- Seller目标类 -->
+	<bean id="sellerTarget" class="com.xgj.aop.spring.advisor.StaticMethodMatcherPointcutAdvisor.Seller"/>
+	
+	<!-- 前置增强 -->
+	<bean id="greetBeforeAdvice" class="com.xgj.aop.spring.advisor.StaticMethodMatcherPointcutAdvisor.GreetBeforeAdivce"/>
+	
+	<!-- 切面 -->
+	<bean id="greetAdvicesor" class="com.xgj.aop.spring.advisor.StaticMethodMatcherPointcutAdvisor.GreetingAdvisor"
+		p:advice-ref="greetBeforeAdvice"/> <!-- 向切面注入一个前置增强 -->
+		
+	<!-- 通过父bean,配置公共的信息 -->
+	<bean id="parent" abstract="true"  
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:interceptorNames="greetAdvicesor"
+		p:proxyTargetClass="true"/>
+
+	<!-- waiter代理 -->
+	<bean id="waiter" parent="parent" p:target-ref="waiterTarget"/>
+	<!-- seller代理 -->
+	<bean id="seller" parent="parent" p:target-ref="sellerTarget"/>
+	
+</beans>
