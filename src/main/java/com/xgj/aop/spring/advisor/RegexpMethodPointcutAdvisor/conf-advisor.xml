@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 配置切面：静态正则表达式方法匹配切面 -->
+	
+	<!-- Waiter目标类 -->
+	<bean id="waiterTarget" class="com.xgj.aop.spring.advisor.RegexpMethodPointcutAdvisor.Waiter"/>
+	<!-- Seller目标类 -->
+	<bean id="sellerTarget" class="com.xgj.aop.spring.advisor.RegexpMethodPointcutAdvisor.Seller"/>
+	
+	<!-- 前置增强 -->
+	<bean id="greetBeforeAdvice" class="com.xgj.aop.spring.advisor.RegexpMethodPointcutAdvisor.GreetBeforeAdivce"/>
+	
+	<!-- 切面 -->
+	<bean id="regexpAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
+		p:advice-ref="greetBeforeAdvice"
+		p:pattern=".*greet.*" > <!--  向切面注入一个前置增强  ， 用正则表达式定义目标类全限定方法名的匹配模式串 。-->
+		
+	</bean>
+	<!-- 通过父bean,配置公共的信息 -->
+	<bean id="parent" abstract="true"  
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:interceptorNames="regexpAdvisor"
+		p:proxyTargetClass="true"/>
+
+	<!-- waiter代理 -->
+	<bean id="waiter" parent="parent" p:target-ref="waiterTarget"/>
+	<!-- seller代理 -->
+	<bean id="seller" parent="parent" p:target-ref="sellerTarget"/>
+	
+</beans>
