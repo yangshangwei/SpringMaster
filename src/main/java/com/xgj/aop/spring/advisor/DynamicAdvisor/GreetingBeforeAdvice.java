@@ -9,7 +9,7 @@ public class GreetingBeforeAdvice implements MethodBeforeAdvice {
 	@Override
 	public void before(Method method, Object[] args, Object target)
 			throws Throwable {
-		// Êä³öÇÐµã
+		// è¾“å‡ºåˆ‡ç‚¹
 		System.out.println("Pointcut:" + target.getClass().getName() + "."
 				+ method.getName());
 		String clientName = (String) args[0];
