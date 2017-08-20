@@ -33,6 +33,7 @@
 		<config>src/main/java/com/xgj/aop/spring/advice/throwsAdvice/conf-advice.xml</config>
 		<config>src/main/java/com/xgj/aop/spring/advisor/DynamicAdvisor/conf-dynamicAdvisor.xml</config>
 		<config>src/main/java/com/xgj/aop/spring/advisor/ControlFlowAdvisor/conf-controlFlowAdvisor.xml</config>
+		<config>src/main/java/com/xgj/aop/spring/advisor/ComposablePointcut/conf-composablePointcut.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/mvc-config.xml</config>
