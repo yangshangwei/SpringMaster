@@ -6,7 +6,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class NullValueTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"classpath:com/xgj/ioc/inject/construct/nullValue/beans.xml");
 
