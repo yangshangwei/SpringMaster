@@ -15,6 +15,8 @@ public class ControlFlowAdvisorTest {
 		waiter.greetTo("XiaoGongJiang");
 		waiter.serverTo("XiaoGongJiang");
 
+		System.out.println("\n");
+
 		WaiterDelegate waiterDelegate = new WaiterDelegate();
 		waiterDelegate.setWaiter(waiter);
 
