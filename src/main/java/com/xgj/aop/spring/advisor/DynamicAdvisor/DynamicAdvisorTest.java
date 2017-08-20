@@ -19,8 +19,8 @@ public class DynamicAdvisorTest {
 		waiter.greetTo("XiaoGongJiangTwo");
 		waiter.serverTo("XiaoGongJiangTwo");
 		// 不在list中的客户
-		waiter.greetTo("Smart");
-		waiter.serverTo("Smart");
+		waiter.greetTo("XiaoGongJiang1");
+		waiter.serverTo("XiaoGongJiang1");
 
 	}
 }
