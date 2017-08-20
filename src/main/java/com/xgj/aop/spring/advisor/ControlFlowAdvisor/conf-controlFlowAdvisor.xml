@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 目标类 -->
+	<bean id="waiterTarget" class="com.xgj.aop.spring.advisor.ControlFlowAdvisor.Waiter"/>
+	
+	<!-- 增强 -->
+	<bean id="greetingBeforeAdvice" class="com.xgj.aop.spring.advisor.ControlFlowAdvisor.GreetingBeforeAdvice"/>
+	
+	<!-- 流程切点   指定流程切点的类 和 流程切点的方法-->
+	<bean id="controlFlowPointcut" class="org.springframework.aop.support.ControlFlowPointcut">
+		<constructor-arg type="java.lang.Class"  value="com.xgj.aop.spring.advisor.ControlFlowAdvisor.WaiterDelegate"/>
+		<constructor-arg type="java.lang.String" value="service"/> 
+	</bean>
+	
+	<!-- 切面 -->
+	<bean id="controlFlowAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"
+		p:pointcut-ref="controlFlowPointcut"
+		p:advice-ref="greetingBeforeAdvice"/>
+		
+		
+	<!-- 代理类 -->
+	<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:interceptorNames="controlFlowAdvisor"
+		p:target-ref="waiterTarget"
+		p:proxyTargetClass="true"/>
+	
+</beans>
