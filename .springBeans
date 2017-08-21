@@ -34,6 +34,8 @@
 		<config>src/main/java/com/xgj/aop/spring/advisor/DynamicAdvisor/conf-dynamicAdvisor.xml</config>
 		<config>src/main/java/com/xgj/aop/spring/advisor/ControlFlowAdvisor/conf-controlFlowAdvisor.xml</config>
 		<config>src/main/java/com/xgj/aop/spring/advisor/ComposablePointcut/conf-composablePointcut.xml</config>
+		<config>src/main/java/com/xgj/aop/spring/advisor/autoCreateProxy/BeanNameAutoProxyCreator/conf-beanNameAutoProxy.xml</config>
+		<config>src/main/java/com/xgj/aop/spring/advisor/autoCreateProxy/DefaultAdvisorProxyCreator/conf-defaultAdvisorProxyCreator.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/mvc-config.xml</config>

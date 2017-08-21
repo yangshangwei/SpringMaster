@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!--通过Advisor自动创建代理-->
+	
+	<!-- 目标Bean -->
+	<bean id="waiter" class="com.xgj.aop.spring.advisor.autoCreateProxy.DefaultAdvisorProxyCreator.Waiter"/>
+	<bean id="seller" class="com.xgj.aop.spring.advisor.autoCreateProxy.DefaultAdvisorProxyCreator.Seller"/>
+	
+	<!-- 增强 -->
+	<bean id="greetingBeforeAdvice" class="com.xgj.aop.spring.advisor.autoCreateProxy.DefaultAdvisorProxyCreator.GreetingBeforeAdvice"/>
+	
+	
+	<!-- 切面 -->
+	<bean id="regexpAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
+		p:patterns=".*greet.*"
+		p:advice-ref="greetingBeforeAdvice"/>
+	
+	<!-- 代理 -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+
+</beans>
