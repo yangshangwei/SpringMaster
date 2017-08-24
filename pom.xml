@@ -95,12 +95,52 @@
 			<version>${log4j.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/cglib/cglib -->
+
+		<!-- asm/cglib依赖（spring依赖） -->
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>${asm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm-util</artifactId>
+			<version>${asm.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
 			<version>${cglib.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>asm</artifactId>
+					<groupId>org.ow2.asm</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>${aopalliance.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
+		</dependency>
+
+
+
 
 	</dependencies>
 
@@ -169,5 +209,9 @@
 		<oracle.version>11.2.0.4.0</oracle.version>
 		<jstl.version>1.2</jstl.version>
 		<cglib.version>3.2.5</cglib.version>
+		<asm.version>4.0</asm.version>
+		<aspectj.version>1.8.1</aspectj.version>
+		<aopalliance.version>1.0</aopalliance.version>
+		<commons-codec.version>1.9</commons-codec.version>
 	</properties>
 </project>
