@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!-- 使用基于Schema的aop命名空间进行配置 -->
+ 
+
+<!-- 基于@AspectJ切面的驱动器 -->
+<aop:aspectj-autoproxy/>
+ 
+<!-- 目标Bean -->
+<bean id="waiter" class="com.xgj.aop.spring.advisor.aspectJ.aspectJByConf.NaiveWaiter"/>
+<!-- 使用了@AspectJ注解的切面类 -->
+<bean class="com.xgj.aop.spring.advisor.aspectJ.aspectJByConf.PreGreetingAspect"/>
+
+</beans>
