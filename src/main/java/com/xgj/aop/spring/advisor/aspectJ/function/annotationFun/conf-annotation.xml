@@ -14,8 +14,11 @@
 <aop:aspectj-autoproxy/>
  
 <!-- 目标Bean -->
-<bean id="waiter" class="com.xgj.aop.spring.advisor.aspectJ.basic.NaiveWaiter" />
+<bean id="naiveWaiterWaiter" class="com.xgj.aop.spring.advisor.aspectJ.function.NaiveWaiter"/>
+
+<bean id="naughtWaiter" class="com.xgj.aop.spring.advisor.aspectJ.function.NaughtWaiter"/>
+
 <!-- 使用了@AspectJ注解的切面类 -->
-<bean class="com.xgj.aop.spring.advisor.aspectJ.basic.EnableSellerAspect"/>
+<bean class="com.xgj.aop.spring.advisor.aspectJ.function.annotationFun.AnnotationTestAspect"/>
 
 </beans>
