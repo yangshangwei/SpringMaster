@@ -10,15 +10,15 @@
 <!-- 使用基于Schema的aop命名空间进行配置 -->
  
 
-<!-- 基于@AspectJ切面的驱动器 -->
+<!-- 基于@AspectJ切面的驱动器   proxy-target-class="true"表示使用CGLib动态代理技术织入增强-->
 <aop:aspectj-autoproxy proxy-target-class="true"/>
+
  
 <!-- 目标Bean -->
-<bean id="naiveWaiter" class="com.xgj.aop.spring.advisor.aspectJ.function.annotationFun.NaiveWaiter"/>
-
-<bean id="naughtWaiter" class="com.xgj.aop.spring.advisor.aspectJ.function.annotationFun.NaughtWaiter"/>
+<bean id="cleanerOne" class="com.xgj.aop.spring.advisor.aspectJ.function.execution.classpoint.CleanerOne"/>
+<bean id="cleanerTwo" class="com.xgj.aop.spring.advisor.aspectJ.function.execution.classpoint.CleanerTwo"/>
 
 <!-- 使用了@AspectJ注解的切面类 -->
-<bean class="com.xgj.aop.spring.advisor.aspectJ.function.annotationFun.AnnotationTestAspect"/>
+<bean class="com.xgj.aop.spring.advisor.aspectJ.function.execution.classpoint.ExecutionClassAspect"/>
 
 </beans>
