@@ -1,4 +1,4 @@
-package com.xgj.aop.spring.advisor.aspectJ.function;
+package com.xgj.aop.spring.advisor.aspectJ.function.annotationFun;
 
 public class NaiveWaiter implements Waiter {
 

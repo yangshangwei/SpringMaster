@@ -18,7 +18,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class AnnotationTestAspect {
 
-	@AfterReturning("@annotation(com.xgj.aop.spring.advisor.aspectJ.function.NeedTest)")
+	@AfterReturning("@annotation(com.xgj.aop.spring.advisor.aspectJ.function.annotationFun.NeedTest)")
 	public void needTest() {
 		System.out.println("needTest() executed,some logic is here");
 	}
