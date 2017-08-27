@@ -14,7 +14,7 @@
 <aop:aspectj-autoproxy/>
  
 <!-- 目标Bean -->
-<bean id="naiveWaiterWaiter" class="com.xgj.aop.spring.advisor.aspectJ.function.NaiveWaiter"/>
+<bean id="naiveWaiter" class="com.xgj.aop.spring.advisor.aspectJ.function.NaiveWaiter"/>
 
 <bean id="naughtWaiter" class="com.xgj.aop.spring.advisor.aspectJ.function.NaughtWaiter"/>
 

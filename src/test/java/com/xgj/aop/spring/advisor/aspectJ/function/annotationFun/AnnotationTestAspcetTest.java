@@ -14,7 +14,7 @@ public class AnnotationTestAspcetTest {
 				"com/xgj/aop/spring/advisor/aspectJ/function/annotationFun/conf-annotation.xml");
 
 		// 必须是接口类型,否则抛类型转换异常
-		Waiter waiter = (Waiter) ctx.getBean("naiveWaiterWaiter");
+		Waiter waiter = (Waiter) ctx.getBean("naiveWaiter");
 
 		// 因为greetTo标注了@NeedTest,因此会被后置增强
 		waiter.greetTo("XiaoGongJiang");
