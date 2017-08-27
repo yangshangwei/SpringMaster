@@ -2,7 +2,7 @@ package com.xgj.aop.spring.advisor.aspectJ.function;
 
 public class NaiveWaiter implements Waiter {
 
-	@NeedTest
+	@NeedTest(true)
 	@Override
 	public void greetTo(String clientName) {
 		System.out.println("NaiveWaiter:greet to " + clientName);

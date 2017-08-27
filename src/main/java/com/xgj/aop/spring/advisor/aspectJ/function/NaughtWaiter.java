@@ -7,7 +7,7 @@ public class NaughtWaiter implements Waiter {
 		System.out.println("NaughtWaiter:greet to " + clientName);
 	}
 
-	@NeedTest
+	@NeedTest(true)
 	@Override
 	public void serverTo(String clientName) {
 		System.out.println("NaughtWaiter:server to " + clientName);
