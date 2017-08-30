@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!-- 使用基于Schema的aop命名空间进行配置 -->
+ 
+
+<!-- 基于@AspectJ切面的驱动器 -->
+<aop:aspectj-autoproxy  proxy-target-class="true"/>
+ 
+<!-- 目标Bean -->
+<bean id="forumService" class="com.xgj.aop.spring.advisor.aspectJ.function.execution.packagepoint.bean.ForumService"/>
+<bean id="userService" class="com.xgj.aop.spring.advisor.aspectJ.function.execution.packagepoint.bean.bean2.UserService"/>
+
+
+
+<!-- 使用了@AspectJ注解的切面类 -->
+<bean class="com.xgj.aop.spring.advisor.aspectJ.function.execution.packagepoint.ExecutionPackagepointAspect"/>
+
+</beans>
