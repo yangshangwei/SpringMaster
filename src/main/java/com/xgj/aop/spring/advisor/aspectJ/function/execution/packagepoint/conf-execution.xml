@@ -22,4 +22,6 @@
 <!-- 使用了@AspectJ注解的切面类 -->
 <bean class="com.xgj.aop.spring.advisor.aspectJ.function.execution.packagepoint.ExecutionPackagepointAspect"/>
 
+<bean class="com.xgj.aop.spring.advisor.aspectJ.function.execution.packagepoint.ExecutionPackagepointAspect2"/>
+
 </beans>
