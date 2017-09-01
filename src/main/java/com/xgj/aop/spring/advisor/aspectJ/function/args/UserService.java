@@ -1,11 +1,8 @@
 package com.xgj.aop.spring.advisor.aspectJ.function.args;
 
-<<<<<<< HEAD
 import org.springframework.stereotype.Component;
 
 @Component
-=======
->>>>>>> 75ea043d8f4c2269f6e35dff789a3d42a2bdf259
 public class UserService {
 
 	public void addUser(User user) {
