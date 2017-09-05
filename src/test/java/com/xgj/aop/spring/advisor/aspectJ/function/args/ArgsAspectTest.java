@@ -10,7 +10,7 @@ public class ArgsAspectTest {
 
 	@Test
 	public void test() {
-		ApplicationContext ctx = new ClassPathXmlApplicationContext(
+		ctx = new ClassPathXmlApplicationContext(
 				"classpath:com/xgj/aop/spring/advisor/aspectJ/function/args/conf-args.xml");
 		UserService userService = ctx.getBean("userService", UserService.class);
 		UserServiceExt userServiceExt = ctx.getBean("userServiceExt",
