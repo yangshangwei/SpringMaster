@@ -37,7 +37,12 @@ public class WithinAspect {
 	// }
 
 	// 匹配com.xgj.aop.spring.advisor.aspectJ.function.within包下的所有类的所有方法，包括子孙包
-	@AfterReturning("within(com.xgj.aop.spring.advisor.aspectJ.function.within..*)")
+	// @AfterReturning("within(com.xgj.aop.spring.advisor.aspectJ.function.within..*)")
+	// public void crossCuttingCode() {
+	// System.out.println("后置增强 some logic is here\n");
+	// }
+
+	@AfterReturning("within(@com.xgj.aop.spring.advisor.aspectJ.function.within.Mart *)")
 	public void crossCuttingCode() {
 		System.out.println("后置增强 some logic is here\n");
 	}

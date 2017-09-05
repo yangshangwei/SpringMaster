@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
  * @date: 2017年9月5日 上午1:30:52
  */
 
+@Mart
 @Component
 public class NaiveWaiter implements Waiter {
 
