@@ -1,0 +1,19 @@
+package com.xgj.aop.spring.advisor.aspectJ.function.thisFun2;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class NaiveWaiter implements Waiter {
+	public void greetTo(String clientName) {
+		System.out.println("NaiveWaiter:greet to " + clientName + "...");
+	}
+
+	public void serveTo(String clientName) {
+		System.out.println("NaiveWaiter:serving " + clientName + "...");
+	}
+
+	public void smile(String clientName, int times) {
+		System.out.println("NaiveWaiter:smile to  " + clientName + times
+				+ "times...");
+	}
+}
