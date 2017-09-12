@@ -20,8 +20,7 @@ import org.aspectj.lang.annotation.Aspect;
 public class JoinPointAspect {
 	// ①环绕增强
 	@Around("execution(* dealLogic(..)) && target(com.xgj.aop.spring.advisor.aspectJAdvance.joinPoint.LogicService)")
-	public void crossCodeCutting(ProceedingJoinPoint pjp) throws Throwable { // ②
-																				// 声明连接点入参
+	public void crossCodeCutting(ProceedingJoinPoint pjp) throws Throwable { // ②声明连接点入参
 		System.out.println("-------ProceedingJoinPoint begin----------");
 		// ③访问连接点信息
 		System.out.println("arg[0]:" + pjp.getArgs()[0]);
