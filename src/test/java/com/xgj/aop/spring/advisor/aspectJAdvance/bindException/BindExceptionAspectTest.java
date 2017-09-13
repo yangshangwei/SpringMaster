@@ -11,6 +11,6 @@ public class BindExceptionAspectTest {
 				"classpath:com/xgj/aop/spring/advisor/aspectJAdvance/bindException/conf-bindException.xml");
 
 		ctx.getBean("bussinessException", BussinessException.class)
-				.dealBussiness("bug2");
+				.dealBussiness("bug");
 	}
 }
