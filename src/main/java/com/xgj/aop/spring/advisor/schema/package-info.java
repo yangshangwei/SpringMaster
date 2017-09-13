@@ -10,7 +10,7 @@
 
  * @Package: com.xgj.aop.spring.advisor.schema
 
- * @Description: 如果项目使用的JDK版本低语Java 5.0，
+ * @Description: 如果项目使用的JDK版本低于Java 5.0，
  * 
  * 				  则无法使用基于@AspectJ注解的切面。但是Spring提供了基于Schema配置的方法，可以达到同样的效果。
 
