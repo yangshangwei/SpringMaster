@@ -15,6 +15,7 @@
 <!-- ref引用adviceMethods,紧接着引用命名切点 以及增强方法使用adviceMethodsBean中的crossCutting方法-->
 <aop:config proxy-target-class="true">
 	<aop:pointcut id="bussinessOneProgram" expression="target(com.xgj.aop.spring.advisor.schema.namePointcut.BussinessOne) and execution(* program(..))" />
+	
 	<aop:aspect ref="adviceMethods">
 		<aop:before  pointcut-ref="bussinessOneProgram" method="crossCutting"/>
 	</aop:aspect>

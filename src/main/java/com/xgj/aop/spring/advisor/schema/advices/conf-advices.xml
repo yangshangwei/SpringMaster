@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context 
+       	http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<aop:config proxy-target-class="true">
+		<!-- 前置增强命名切点 -->
+		<aop:pointcut expression="execution(* dealBussinessBefore(..))" id="before" />
+		<!-- 后置增强命名切点 -->
+		<aop:pointcut expression="execution(* dealWorkNumberForAfterReturring(..))" id="afterReturnning" />
+		<!-- 环绕增强命名切点 -->
+		<aop:pointcut expression="execution(* dealWorkForAround(..)) and within(com.xgj.aop.spring.advisor.schema.advices.BussinessSvc)" id="around" />
+		<!-- 异常抛出命名切点 -->
+		<aop:pointcut expression="within(com.xgj.aop.spring.advisor.schema.advices.BussinessSvc) and execution(* dealBussinessForAfterThorowing(..))"  id="afterThrowing"/>
+		<!-- final抛出命名切点 -->
+		<aop:pointcut expression="execution(* dealWorkForAfter(..))" id="after"/>
+		<!-- 引介增强不同，另述 -->
+
+		<aop:aspect ref="adviceMethods">
+			<!-- 前置增强 -->
+			<aop:before pointcut-ref="before" method="beforeMethod" />
+			<!-- 后置增强 -->
+			<aop:after-returning pointcut-ref="afterReturnning"
+				method="afterReturningMethod" returning="retVal" />
+			<!-- 环绕增强 -->
+			<aop:around pointcut-ref="around" method="aroundMethod"/>
+			<!-- 异常抛出增强 -->
+			<aop:after-throwing pointcut-ref="afterThrowing" method="afterThrowingMethod"  throwing="iae"/>
+			<!-- final增强 -->
+			<aop:after pointcut-ref="after" method="afterMethod"/>
+			
+			<!-- 引介增强  types-matching哪些类需要引介接口的实现  implement-interface要引介实现的接口   default-impl 引介默认的实现类-->
+			<aop:declare-parents 
+				types-matching="com.xgj.aop.spring.advisor.schema.advices.IntfBussiness+" 
+				implement-interface="com.xgj.aop.spring.advisor.schema.advices.InterfaceOne"
+				default-impl="com.xgj.aop.spring.advisor.schema.advices.InterfaceOneImpl"/>
+		</aop:aspect>
+	</aop:config>
+	<!-- 业务类 -->
+	<bean id="bussinessSvc" class="com.xgj.aop.spring.advisor.schema.advices.BussinessSvc" />
+	<bean id="intfBussinessImpl" class="com.xgj.aop.spring.advisor.schema.advices.IntfBussinessImpl"></bean>
+	<!-- 增强类 -->
+	<bean id="adviceMethods" class="com.xgj.aop.spring.advisor.schema.advices.AdviceMethods" />
+</beans>
