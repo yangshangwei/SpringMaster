@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context 
+       	http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- (1)配置一个基于Schema的切面，它使用了aop命名空间， 因此首先声明aop及指定aop文件   如上-->
+
+<!-- ref引用adviceMethods,紧接着引用命名切点 以及增强方法使用adviceMethodsBean中的crossCutting方法-->
+<aop:config proxy-target-class="true">
+	<!-- 定义切点 -->
+	<aop:pointcut id="bussinessBindParamProgram" expression="target(com.xgj.aop.spring.advisor.schema.bindParameter.BussinessBindParam) and args(name,num,..)" />
+	
+	<aop:aspect ref="adviceMethodsBindParam">
+		<aop:before  pointcut-ref="bussinessBindParamProgram" method="crossCutting"/>
+	</aop:aspect>
+</aop:config>
+
+<!-- 扫描类包以及使用注解定义的bean -->
+<context:component-scan base-package="com.xgj.aop.spring.advisor.schema.bindParameter"/>
+</beans>
