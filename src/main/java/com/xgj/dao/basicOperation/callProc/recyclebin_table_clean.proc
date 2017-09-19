@@ -1,0 +1,11 @@
+create or replace procedure recyclebin_table_clean as
+V_SQL VARCHAR2(200);
+begin
+for v_table_name in (select distinct(OBJECT_NAME) from user_recyclebin where to_date(droptime,'yyyy-mm-dd hh24:mi:ss')<add_months( sysdate, -1) and type in ('Table Partition','TABLE'))
+LOOP
+begin
+V_SQL:='purge table '||'"'||v_table_name.OBJECT_NAME||'"';
+execute immediate V_SQL;
+end;
+end LOOP;
+end recyclebin_table_clean;

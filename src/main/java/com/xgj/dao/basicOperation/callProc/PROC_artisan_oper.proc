@@ -1,0 +1,16 @@
+create or replace procedure PROC_artisan_oper(p_userName in varchar2,
+                                              userCount  out number) is
+
+  v_userCount number(2);
+begin
+
+  select count(1)
+    into v_userCount
+    from artisan_user
+   where user_name = p_userName;
+
+userCount := v_userCount ;
+exception
+  when others then
+    rollback;
+end PROC_artisan_oper;
