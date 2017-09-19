@@ -76,6 +76,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring-orm.version}</version>
+		</dependency>
+		
 		<!-- 添加oracle jdbc driver -->
 		<dependency>
 			<groupId>com.oracle</groupId>
@@ -94,6 +101,7 @@
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
+
 
 
 		<!-- asm/cglib依赖（spring依赖） -->
@@ -213,5 +221,6 @@
 		<aspectj.version>1.8.1</aspectj.version>
 		<aopalliance.version>1.0</aopalliance.version>
 		<commons-codec.version>1.9</commons-codec.version>
+		<spring-orm.version>4.3.9.RELEASE</spring-orm.version>
 	</properties>
 </project>
