@@ -6,11 +6,11 @@ import java.sql.Types;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.CallableStatementCallback;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.xgj.dao.demo.BaseDao;
 
-@Component
+@Repository
 public class CallProcDemo extends BaseDao {
 	// (1) 调用存过的语句
 	private static final String PROCSQL_STRING = "call PROC_artisan_oper(?,?)";

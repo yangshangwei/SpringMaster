@@ -1,0 +1,20 @@
+create or replace procedure PROC_artisan_selectInfo_withId(p_user_id in varchar2,
+                                               o_userName out varchar2 ,
+                                              o_password  out varchar2) is
+
+  v_userName  varchar2(200);
+  v_password varchar2(200);
+begin
+
+  select  user_name , password
+    into v_userName , v_password
+    from artisan_user
+   where user_id = p_user_id;
+
+o_userName :=v_userName;
+o_password := v_password;
+
+exception
+  when others then
+    rollback;
+end PROC_artisan_selectInfo_withId;

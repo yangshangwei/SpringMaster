@@ -1,0 +1,21 @@
+-- Create table
+create table ARTISAN_USER
+(
+  user_id    NUMBER,
+  user_name  VARCHAR2(50),
+  password   VARCHAR2(10),
+  credits    NUMBER,
+  last_visit DATE,
+  last_ip    VARCHAR2(20)
+)
+tablespace TAB_CC
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 16
+    next 8
+    minextents 1
+    maxextents unlimited
+  );
