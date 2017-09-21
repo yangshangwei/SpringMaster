@@ -1,3 +1,4 @@
+-- Database Oracle 
 -- Create table
 create table ARTISAN_USER
 (

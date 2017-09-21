@@ -9,7 +9,7 @@ import java.util.Map;
  * 
  * @ClassName: SimpleThreadLocaByOurSelf
  * 
- * @Description: ThreadLocal的伪代码,简易实现
+ * @Description: ThreadLocal的伪代码,简易实现，主要介绍原理
  * 
  * @author: Mr.Yang
  * 
@@ -41,7 +41,7 @@ public class SimpleThreadLocalByOurSelf {
 	 * 
 	 * @Title: get
 	 * 
-	 * @Description: 如果Map中没有key ,则设置为初始值null ,否则从map中获取
+	 * @Description: 如果Map中没有key ,则设置为初始值null，并保存在Map中,否则从map中获取
 	 * 
 	 * 
 	 * @return: void
@@ -51,6 +51,7 @@ public class SimpleThreadLocalByOurSelf {
 		Object object = valueMap.get("currentThread");
 		if (object == null && !valueMap.containsKey(currentThread)) {
 			object = initValue();
+			valueMap.put(currentThread, object);
 		} else {
 			object = valueMap.get(currentThread);
 		}
@@ -71,6 +72,17 @@ public class SimpleThreadLocalByOurSelf {
 		valueMap.remove(currentThread);
 	}
 
+	/**
+	 * 
+	 * 
+	 * @Title: initValue
+	 * 
+	 * @Description: 初始值
+	 * 
+	 * @return
+	 * 
+	 * @return: Object
+	 */
 	private Object initValue() {
 		return null;
 	}

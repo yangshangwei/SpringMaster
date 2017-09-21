@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context 
+       	http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 方式一 ：使用Advisor API方式实现的流程控制切面 -->
+
+	<!--Advisor API 流程切点 指定流程切点的类 和 流程切点的方法 -->
+	<bean id="controlFlowPointcut" class="org.springframework.aop.support.ControlFlowPointcut">
+		<constructor-arg type="java.lang.Class"
+			value="com.xgj.aop.spring.advisor.ControlFlowAdvisor.WaiterDelegate" />
+		<constructor-arg type="java.lang.String" value="service" />
+	</bean>
+
+	<!--Advisor API 切面 -->
+	<bean id="controlFlowAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"
+		p:pointcut-ref="controlFlowPointcut" p:advice-ref="greetingBeforeAdvice" />
+
+
+	<!-- ||||||||||||||||||分隔线|||||||||||||||||| -->
+
+	<!-- 方式二： 使用@AspectJ注解方式定义切面 扫描 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+
+	<!-- ||||||||||||||||||分隔线|||||||||||||||||| -->
+
+
+	<aop:config proxy-target-class="true">
+		<!-- 命名切点 -->
+		<aop:pointcut expression="execution(* com..*.Waiter.greetTo(..))"
+			id="beforeAdvice" />
+		<!-- 方式三： 基于<aop:advisor>的方式 -->
+		<aop:advisor advice-ref="greetingBeforeAdvice"
+			pointcut-ref="beforeAdvice" />
+	</aop:config>
+	<bean id="greetingBeforeAdvice"
+		class="com.xgj.aop.spring.advisor.schema.advisor.GreetingBeforeAdvice" />
+
+
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="bussinessBindParamProgram"
+			expression="target(com.xgj.aop.spring.advisor.schema.bindParameter.BussinessBindParam) and args(name,num,..)" />
+		<!-- 方式四：基于<aop:aspect>的方式 -->
+		<aop:aspect ref="adviceMethodsBindParam">
+			<aop:before pointcut-ref="bussinessBindParamProgram"
+				method="crossCutting" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
