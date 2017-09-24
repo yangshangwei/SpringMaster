@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 引入其他xml -->
+	<import resource="classpath:com/xgj/dao/transaction/xmlTrans/conf_txaop_base.xml"/>
+	
+	<!-- 使用强大的切点表达式语言轻松定义目标方法 -->
+	<aop:config proxy-target-class="true">
+		<!-- 通过aop定义事务增强切面 -->
+		<aop:pointcut id="serviceMethod" 
+			 expression="execution(* com.xgj.dao.transaction.xmlTrans.service.*Service.*(..))" />	
+		<!-- 引用切面和事务增强 -->
+		<aop:advisor pointcut-ref="serviceMethod"   advice-ref="txAdvice"/>
+	</aop:config>
+	
+	<!-- 事务增强 -->
+	<tx:advice id="txAdvice"  transaction-manager="transactionManager" >
+		<!-- 事务属性定义 -->
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="add*" rollback-for="Exception"/>
+			<tx:method name="update*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+</beans>
