@@ -82,7 +82,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring-orm.version}</version>
 		</dependency>
-		
+
 		<!-- 添加oracle jdbc driver -->
 		<dependency>
 			<groupId>com.oracle</groupId>
@@ -147,6 +147,12 @@
 			<version>${commons-codec.version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
+		</dependency>
 
 
 
@@ -222,5 +228,6 @@
 		<aopalliance.version>1.0</aopalliance.version>
 		<commons-codec.version>1.9</commons-codec.version>
 		<spring-orm.version>4.3.9.RELEASE</spring-orm.version>
+		<commons-lang.version>2.6</commons-lang.version>
 	</properties>
 </project>

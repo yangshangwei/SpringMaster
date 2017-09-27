@@ -1,4 +1,4 @@
-package com.xgj.dao.transaction.nestedCall.dao.impl;
+package com.xgj.dao.transaction.multiThreadinTrans.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,9 +12,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import com.xgj.dao.transaction.nestedCall.dao.BaseDao;
-import com.xgj.dao.transaction.nestedCall.dao.StudentDao;
-import com.xgj.dao.transaction.nestedCall.domain.Student;
+import com.xgj.dao.transaction.multiThreadinTrans.domain.Student;
 
 /**
  * 
