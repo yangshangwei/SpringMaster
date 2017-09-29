@@ -16,7 +16,7 @@ public class NativeConnTest {
 	public void initContext() {
 		// Æô¶¯Spring ÈÝÆ÷
 		ctx = new ClassPathXmlApplicationContext(
-				"classpath:com/xgj/dao/lob/nativeConn/conf-getLocalConnObj.xml");
+				"classpath:com/xgj/dao/lob/lobOperation.xml");
 		System.out.println("initContext successfully");
 	}
 

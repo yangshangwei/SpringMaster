@@ -21,7 +21,7 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
 
 	private Logger logger = Logger.getLogger(TeacherDaoImpl.class);
 	// 故意写错表名,让其抛出异常,验证和addTeacher在一个事务中
-	private static final String addTeacherSQL = "insert into student1(id,name,age,sex) values(student_id_seq.nextval,?,?,?)";
+	private static final String addStudentSQL = "insert into student1(id,name,age,sex) values(student_id_seq.nextval,?,?,?)";
 	private static final String queryStudentByIdSQL = "select name ,age ,sex from student where id = ?";
 
 	@Override
@@ -33,7 +33,7 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con)
 					throws SQLException {
-				PreparedStatement ps = con.prepareStatement(addTeacherSQL,
+				PreparedStatement ps = con.prepareStatement(addStudentSQL,
 						new String[] { "id" });
 				ps.setString(1, student.getName());
 				ps.setInt(2, student.getAge());

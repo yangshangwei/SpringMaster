@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
+	<context:component-scan base-package="com.xgj.dao.lob" />
+
+	
+	<!-- 使用context命名空间 配置数据库的properties文件 -->
+	<context:property-placeholder location="classpath:spring/jdbc.properties" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" 
+		p:driverClassName="${jdbc.driverClassName}"
+		p:url="${jdbc.url}" 
+		p:username="${jdbc.username}" 
+		p:password="${jdbc.password}" />
+
+	<!--  nativeJdbcExtractor 和 oracleLobHandler Bean 都设置为 lazy-init="true"，
+		   这是因为 nativeJdbcExtractor 需要通过运行期的反射机制获取底层的 JDBC 对象，所以需要避免在 Spring 容器启动时就实例化这两个 Bean -->
+
+	<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor"
+		  lazy-init="true"/>
+	
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler" 
+		  lazy-init="true"
+		  p:nativeJdbcExtractor-ref="nativeJdbcExtractor"/> <!-- 设置本地 Jdbc 对象抽取器 -->
+		
+		<!-- 可以用下面的defaultLobHandler 替换如上Oracle中复杂的写法  （如果是Oracle9以后，完全可以用下面的写法）
+	<bean id="defaultLobHandler"
+		class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+		lazy-init="true"/> -->
+		
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+		p:dataSource-ref="dataSource"/>
+	
+</beans>
