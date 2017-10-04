@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/cache 
+       http://www.springframework.org/schema/cache/spring-cache.xsd">
+	
+	<!-- 扫描注入注解，比如@Autowired -->
+	<context:component-scan base-package="com.xgj.cache.springCacheXml"/>
+	
+	<!-- 使用context命名空间，加载数据库的properties文件 -->
+	<context:property-placeholder location="classpath:spring/jdbc.properties" />
+	
+	<!-- 数据库 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" 
+		p:driverClassName="${jdbc.driverClassName}"
+		p:url="${jdbc.url}" 
+		p:username="${jdbc.username}" 
+		p:password="${jdbc.password}" />
+
+	<!-- 配置namedParameterJdbcTemplate模板 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		 <constructor-arg ref="dataSource"/>
+	</bean>
+		
+	
+	
+	<!-- 定义需要使用缓存的类 -->
+	<bean id="littleArtisanSpringCacheService"  class="com.xgj.cache.springCacheXml.service.LittleArtisanSpringCacheService"/>
+	
+	<!-- 缓存管理器  使用SimpleCacheManager，基于JDK的实现（基于ConcurrentMap的配置）-->
+	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+	  <property name="caches">
+	     <set>
+	        <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="littleArtisan"/>
+	     </set>
+	  </property>
+	</bean>
+	
+	<!-- 缓存定义 -->
+	<cache:advice  id="cacheAdvice" cache-manager="cacheManager" >
+		<cache:caching cache="littleArtisan"> <!-- 公共缓存littleArtisan -->
+			<cache:cacheable method="getArtisan" key="#artisanName"/> <!-- getArtisan使用 Cacheable  -->
+			<cache:cache-evict method="reloadArtisan" all-entries="true"/><!-- reloadArtisan使用 CacheEvict  -->
+		</cache:caching>
+	</cache:advice>
+	
+	<!-- 切面增强 -->
+	<aop:config>
+		<aop:pointcut id="cachePoint" expression="execution(* com.xgj.cache.springCacheXml.service.LittleArtisanSpringCacheService.*(..))" />
+		<aop:advisor advice-ref="cacheAdvice" 
+					 pointcut-ref="cachePoint"/>	
+	</aop:config>
+	
+</beans>

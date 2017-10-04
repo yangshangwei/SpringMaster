@@ -1,0 +1,7 @@
+既然是Spring Cache Abstraction， 缓存自然依赖于具体的实现，
+比如基于JDK ConcurrentMap的SimpleCacheManager、EhCache、GemFire、HazelCast和Guava等等。
+
+
+所以使用Spring Cache抽象的步骤 大体分为两步：
+	1.声明对Cache的支持（xml 或者 注解的方式）
+	2.配置CacheManager （即配置具体的实现）
