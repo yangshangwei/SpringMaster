@@ -102,7 +102,12 @@
 			<version>${log4j.version}</version>
 		</dependency>
 
-
+		<!-- SLF4J/Logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.7</version>
+        </dependency>	
 
 		<!-- asm/cglib依赖（spring依赖） -->
 		<dependency>
@@ -141,7 +146,7 @@
 			<artifactId>aopalliance</artifactId>
 			<version>${aopalliance.version}</version>
 		</dependency>
-		<dependency>
+		<dependency>  
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>${commons-codec.version}</version>
@@ -154,7 +159,11 @@
 			<version>${commons-lang.version}</version>
 		</dependency>
 
-
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>${ehcache.version}</version>
+		</dependency>
 
 	</dependencies>
 
@@ -210,7 +219,7 @@
 
 		</plugins>
 	</build>
-
+ 
 	<properties>
 		<file.encoding>UTF-8</file.encoding>
 		<spring.version>4.3.9.RELEASE</spring.version>
@@ -229,5 +238,6 @@
 		<commons-codec.version>1.9</commons-codec.version>
 		<spring-orm.version>4.3.9.RELEASE</spring-orm.version>
 		<commons-lang.version>2.6</commons-lang.version>
+		<ehcache.version>2.10.4</ehcache.version>
 	</properties>
 </project>

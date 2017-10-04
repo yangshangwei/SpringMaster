@@ -1,0 +1,22 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" 
+	updateCheck="true"
+	monitoring="autodetect" 
+	dynamicConfig="true">
+	<diskStore path="java.io.tmpdir" />
+	<cache name="products" 
+		maxEntriesLocalHeap="100"
+		maxEntriesLocalDisk="1000" 
+		eternal="false" 
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="600"
+		memoryStoreEvictionPolicy="LFU" 
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+</ehcache>
+<!-- 这里我们设置一个名为'products'的缓存。 
+最多100个products将保存在内存[堆叠]存储中，
+而最多1000个products将被保留在DiskStore中，
+指定的路径为“java.io.tmpdir”，它指的是默认的临时文件路径。
+ 如果产品闲置超过5分钟，寿命超过10分钟，products缓存将会过期 -->
