@@ -103,11 +103,11 @@
 		</dependency>
 
 		<!-- SLF4J/Logback -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.1.7</version>
-        </dependency>	
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.7</version>
+		</dependency>
 
 		<!-- asm/cglib依赖（spring依赖） -->
 		<dependency>
@@ -146,7 +146,7 @@
 			<artifactId>aopalliance</artifactId>
 			<version>${aopalliance.version}</version>
 		</dependency>
-		<dependency>  
+		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>${commons-codec.version}</version>
@@ -165,11 +165,18 @@
 			<version>${ehcache.version}</version>
 		</dependency>
 
+
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>18.0</version> 
+		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>hello-spring4</finalName>
-		<plugins>
+		<plugins> 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -191,7 +198,7 @@
 							<port>8080</port>
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
-					</connectors>
+					</connectors> 
 					<contextPath>/${project.artifactId}</contextPath>
 					<scanIntervalSeconds>5</scanIntervalSeconds>
 				</configuration>
@@ -219,7 +226,7 @@
 
 		</plugins>
 	</build>
- 
+
 	<properties>
 		<file.encoding>UTF-8</file.encoding>
 		<spring.version>4.3.9.RELEASE</spring.version>
