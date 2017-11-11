@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置Job类 -->
+    <bean id="myJob" class="com.xgj.quartz.quartzWithSpring.xml.MyJob"></bean>
+
+    <!-- 配置JobDetail -->
+     <bean id="jobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="com.xgj.quartz.quartzWithSpring.xml2.MyJob2"></property>
+        <property name="durability" value="true"></property>
+    </bean>
+    
+
+    <!-- 配置tirgger触发器 -->
+    <bean id="cronTriggerFactoryBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <!-- jobDetail -->
+        <property name="jobDetail" ref="jobDetail"></property>
+
+        <!-- cron表达式，执行时间  每5秒执行一次 -->
+        <property name="cronExpression" value="0/5 * * * * ?"></property>
+    </bean>
+
+    <!-- 配置调度工厂 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+    <bean id="springJobSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="cronTriggerFactoryBean"></ref>
+            </list>
+        </property>
+
+    </bean>
+</beans>
