@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="myJobService" class="com.xgj.quartz.jdkTimer.springJdkTimer2.MyJobService" />
+
+	<!-- Spring4.0以上版本已经不支持ScheduledTimerTask，而是推荐使用Quartz -->
+
+	<bean id="scheduleTask" class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject" ref="myJobService" />
+		<property name="targetMethod" value="doJob" /> 
+	</bean>
+	
+	
+	 <bean id="scheduledTimerTask"    
+          class="org.springframework.scheduling.timer.ScheduledTimerTask">    
+        <property name="timerTask" ref="scheduleTask"/>    
+        <property name="period" value="5000"/>    
+         <property name="delay" value="1000"/>        
+    </bean>    
+	
+
+	<bean id="timerFactory" class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+				<ref bean="scheduledTimerTask" />
+			</list>
+		</property>
+	</bean>
+
+
+</beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="timeTask" class="com.xgj.quartz.jdkTimer.springJdkTimer.MyTask" />
+
+	<!-- Spring4.0以上版本已经不支持ScheduledTimerTask，而是推荐使用Quartz -->
+
+	<bean id="scheduleTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="timerTask" ref="timeTask" />
+		<property name="delay" value="1000" /> <!--延迟1s -->
+		<property name="period" value="1000" /> <!--1s一次 -->
+		<property name="fixedRate" value="true" />
+	</bean>
+
+	<bean id="timerFactory" class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+				<ref bean="scheduleTask" />
+			</list>
+		</property>
+	</bean>
+
+
+</beans>
