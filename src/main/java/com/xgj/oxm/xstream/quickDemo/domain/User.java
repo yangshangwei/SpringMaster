@@ -10,7 +10,8 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private int userId;
+	private int id;
+
 	private String userName;
 	private String password;
 	private int credits;
@@ -26,12 +27,15 @@ public class User implements Serializable {
 	public void setLogs(List logs) {
 		this.logs = logs;
 	}
-	public int getUserId() {
-		return userId;
+
+	public int getId() {
+		return id;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	public String getUserName() {
 		return userName;
 	}

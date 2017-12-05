@@ -39,7 +39,7 @@ public class XStreamDemo {
 		log.setLoginDate(new Date());
 
 		User user = new User();
-		user.setUserId(1);
+		user.setId(1);
 		user.setUserName("Artisan");
 		user.setPassword("artisan");
 		user.setCredits(1000);
