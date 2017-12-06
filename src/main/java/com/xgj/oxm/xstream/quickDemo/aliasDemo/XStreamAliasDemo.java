@@ -25,7 +25,7 @@ public class XStreamAliasDemo {
 		// (3)把LoginLog的userId属性视为xml属性，默认为xml的元素
 		xstream.aliasAttribute(LoginLog.class, "userId", "id");
 		xstream.useAttributeFor(LoginLog.class, "userId");
-		
+
 		// (4)去掉集合类型生成XML的父节点，即忽略xml中的<logs></logs>标记
 		xstream.addImplicitCollection(User.class, "logs");
 	}
