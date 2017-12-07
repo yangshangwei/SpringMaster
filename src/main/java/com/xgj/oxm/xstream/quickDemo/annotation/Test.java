@@ -13,10 +13,10 @@ public class Test {
 	private static XStream xstream;
 	static {
 		xstream = new XStream();
-		// (1) 实现该方法，判断要转换的类型
-		xstream.processAnnotations(User.class);
-		xstream.processAnnotations(LoginLog.class);
-		// (2)自动加载注解Bean
+		// (1) 第一张方式 手工注册 ： 实现该方法，判断要转换的类型
+		// xstream.processAnnotations(User.class);
+		// xstream.processAnnotations(LoginLog.class);
+		// (2) 第二种方法 自动检测 自动加载注解Bean 推荐
 		xstream.autodetectAnnotations(true);
 	}
 
