@@ -10,11 +10,9 @@ public class ArgsAspectTest {
 
 	@Test
 	public void test() {
-		ctx = new ClassPathXmlApplicationContext(
-				"classpath:com/xgj/aop/spring/advisor/aspectJ/function/args/conf-args.xml");
+		ctx = new ClassPathXmlApplicationContext("classpath:com/xgj/aop/spring/advisor/aspectJ/function/args/conf-args.xml");
 		UserService userService = ctx.getBean("userService", UserService.class);
-		UserServiceExt userServiceExt = ctx.getBean("userServiceExt",
-				UserServiceExt.class);
+		UserServiceExt userServiceExt = ctx.getBean("userServiceExt", UserServiceExt.class);
 
 		User user = new User();
 		ArtisanTT artisan = new ArtisanTT();
@@ -33,6 +31,7 @@ public class ArgsAspectTest {
 		userService.delArtisanTT(artisan);
 
 		System.out.println("================================");
+
 		// 入参为user，因此也会被织入横切逻辑
 		userServiceExt.addUser(user);
 		// 入参为user，因此也会被织入横切逻辑
@@ -45,5 +44,6 @@ public class ArgsAspectTest {
 		userServiceExt.addArtisanTT(artisan);
 		userServiceExt.modifyArtisanTT(artisan);
 		userServiceExt.delArtisanTT(artisan);
+
 	}
 }
