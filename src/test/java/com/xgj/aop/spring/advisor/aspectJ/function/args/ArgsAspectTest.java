@@ -23,10 +23,10 @@ public class ArgsAspectTest {
 		userService.modifyUser(user);
 		// 织入横切逻辑
 		userService.delUser(user);
-		// userServiceExt继承userService，因此也会被织入横切逻辑
+		// 入参为user，因此也会被织入横切逻辑
 		userServiceExt.addUser(user);
-		// userServiceExt继承userService，因此也会被织入横切逻辑
+		// 入参为user，因此也会被织入横切逻辑
 		userServiceExt.modifyUser(user);
-		// userServiceExt继承userService，因此也会被织入横切逻辑
+		// 入参为user，因此也会被织入横切逻辑
 	}
 }

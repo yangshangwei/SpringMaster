@@ -3,7 +3,7 @@ package com.xgj.aop.spring.advisor.aspectJ.function.args;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserServiceExt extends UserService {
+public class UserServiceExt {
 	public void addUser(User user) {
 		System.out.println("всюЮ addUser " + user);
 	}
