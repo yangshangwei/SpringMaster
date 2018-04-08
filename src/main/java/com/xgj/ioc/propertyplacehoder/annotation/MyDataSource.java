@@ -76,4 +76,9 @@ public class MyDataSource {
 		return password;
 	}
 
+	@Override
+	public String toString() {
+		return "MyDataSource [driveClassName=" + driveClassName + ", url=" + url + ", userName=" + userName + ", password=" + password + "]";
+	}
+
 }

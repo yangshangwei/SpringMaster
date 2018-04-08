@@ -12,6 +12,8 @@ public class AnnotationTest {
 		MyDataSource myDataSource = ctx.getBean("myDataSource",
 				MyDataSource.class);
 
+		System.out.println(myDataSource);
+
 		myDataSource.getDriveClassName();
 		myDataSource.getUrl();
 		myDataSource.getUserName();
