@@ -38,6 +38,7 @@
 		<config>src/main/java/com/xgj/aop/spring/advisor/autoCreateProxy/DefaultAdvisorProxyCreator/conf-defaultAdvisorProxyCreator.xml</config>
 		<config>src/main/java/com/xgj/aop/spring/advisor/aspectJ/aspectJByConf/conf-aspectJ.xml</config>
 		<config>src/main/java/com/xgj/aop/spring/advisor/multiDefine/conf_aop_multi_define.xml</config>
+		<config>src/main/java/com/xgj/spel/beans_spel.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/mvc-config.xml</config>
