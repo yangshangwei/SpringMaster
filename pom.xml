@@ -193,7 +193,6 @@
 		<dependency>
 			<groupId>org.codehaus.jettison</groupId>
 			<artifactId>jettison</artifactId>
-<<<<<<< HEAD
 			<version>${jettison.version}</version>
 		</dependency>
 
@@ -202,13 +201,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.38</version>
 		</dependency>
-
-
-=======
-			<version>${jettison.version}</version> 
-		</dependency>
-
->>>>>>> 02e3d73197964fcdb00f1a42ebcc9b96897dc20d
 	</dependencies>
 
 	<build>
