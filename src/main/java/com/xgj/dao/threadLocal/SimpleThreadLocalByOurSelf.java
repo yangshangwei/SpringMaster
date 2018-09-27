@@ -48,7 +48,7 @@ public class SimpleThreadLocalByOurSelf {
 	 */
 	public void get() {
 		Thread currentThread = Thread.currentThread();
-		Object object = valueMap.get("currentThread");
+		Object object = valueMap.get(currentThread);
 		if (object == null && !valueMap.containsKey(currentThread)) {
 			object = initValue();
 			valueMap.put(currentThread, object);
